@@ -4,11 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- 1. Netlify Identity Widget -->
+
+    <!-- 1. Force Decap CMS to point to your Netlify backend on every page load -->
+    <script>
+      localStorage.setItem("netlifySiteURL", "https://haarlekin.netlify.app");
+    </script>
+
+    <!-- 2. Load the Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <!-- 2. Tell Identity where your API lives BEFORE Decap CMS loads -->
+    <!-- 3. Initialize Identity with your full Netlify API endpoint -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.init({
@@ -17,7 +23,7 @@
       }
     </script>
 
-    <!-- 3. Decap CMS Script -->
+    <!-- 4. Load Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
