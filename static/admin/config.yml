@@ -6,9 +6,6 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: "{{slug}}"
-public_folder: "{{slug}}"
-
 collections:
   - name: "pages"
     label: "Seiten"
@@ -29,7 +26,7 @@ collections:
     slug: "{{slug}}"
     path: "{{slug}}/index"
     media_folder: "{{slug}}"
-    public_folder: "{{slug}}"
+    public_folder: "/art/{{slug}}"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Titelbild", name: "cover", widget: "image", required: false }
@@ -44,7 +41,7 @@ collections:
     slug: "{{slug}}"
     path: "{{slug}}/index"
     media_folder: "{{slug}}"
-    public_folder: "{{slug}}"
+    public_folder: "/award/{{slug}}"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Titelbild", name: "cover", widget: "image", required: false }
@@ -59,7 +56,7 @@ collections:
     slug: "{{slug}}"
     path: "{{slug}}/index"
     media_folder: "{{slug}}"
-    public_folder: "{{slug}}"
+    public_folder: "/salon/{{slug}}"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
 
