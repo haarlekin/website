@@ -1,9 +1,7 @@
 backend:
   name: git-gateway
-  site_domain: "haarlekin.netlify.app"
-  identity_url: "https://haarlekin.netlify.app/.netlify/identity"
-  gateway_url: "https://haarlekin.netlify.app/.netlify/git"
   branch: main
+  site_domain: haarlekin.netlify.app
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
