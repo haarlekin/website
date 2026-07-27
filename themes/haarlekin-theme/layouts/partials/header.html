@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <a href="{{ site.Home.RelPermalink }}">
+        <img src="/images/haarlekin_blue_highres.png" alt="Haarlekin" class="site-logo">
+      </a>
+      <span class="site-subtitle">{{ site.Params.subtitle }}</span>
+    </div>
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+  </div>
+</header>

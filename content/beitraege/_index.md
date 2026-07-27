@@ -1,0 +1,4 @@
+---
+title: Beiträge
+heading: Beiträge
+---

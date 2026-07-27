@@ -1,0 +1,50 @@
+baseURL = 'https://www.haarlekin.at/'
+locale = 'de-DE'
+title = 'Haarlekin - Friseursalon Innsbruck'
+theme = 'haarlekin-theme'
+
+[params]
+  subtitle = 'Friseursalon'
+  phone = '+43 512 57 46 75'
+  phone_tel = '+43512574675'
+  address = 'Heiliggeiststrasse 2'
+  address_link = 'https://goo.gl/maps/iG89XmewspYNkRXy6'
+  email = 'haarlekin@gmx.at'
+  instagram = 'https://www.instagram.com/hell_alexandra/'
+  facebook = 'https://www.facebook.com/designs.for.art'
+  instagram_embed = 'hell_alexandra'
+
+  [params.hours]
+    monday = 'geschlossen'
+    tuesday = '8:00–18:00'
+    wednesday = '8:00–18:00'
+    thursday = '8:00–20:00'
+    friday = '8:00–18:00'
+    saturday = 'nach Vereinbarung'
+    sunday = 'geschlossen'
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Beiträge'
+    pageRef = '/beitraege'
+    weight = 20
+
+  [[menus.main]]
+    name = 'Art'
+    pageRef = '/art'
+    weight = 30
+
+  [[menus.main]]
+    name = 'Awards'
+    pageRef = '/award'
+    weight = 40
+
+  [[menus.main]]
+    name = 'Salon'
+    pageRef = '/salon'
+    weight = 50

@@ -1,0 +1,66 @@
+{{ define "main" }}
+  {{ $images := .Resources.ByType "image" }}
+  {{ if $images }}
+    <div class="carousel-wrapper">
+      <div class="swiper hero-carousel">
+        <div class="swiper-wrapper">
+          {{ range $images }}
+            <div class="swiper-slide">
+              <img src="{{ .RelPermalink }}" alt="">
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+  <div class="home-columns">
+    <div class="home-column">
+      <h3><i class="fa-regular fa-address-book"></i> Kontakt</h3>
+      <p><a href="tel:{{ site.Params.phone_tel }}"><i class="fas fa-phone-alt"></i> {{ site.Params.phone }}</a></p>
+      <p><a href="{{ site.Params.address_link }}" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> {{ site.Params.address }}</a></p>
+      <p><a href="mailto:{{ site.Params.email }}"><i class="fas fa-envelope"></i> {{ site.Params.email }}</a></p>
+    </div>
+    <div class="home-column">
+      <h3><i class="fas fa-clock"></i> Öffnungszeiten</h3>
+      <table class="hours-table">
+        <tr><td>Montag</td><td>{{ site.Params.hours.monday }}</td></tr>
+        <tr><td>Dienstag</td><td>{{ site.Params.hours.tuesday }}</td></tr>
+        <tr><td>Mittwoch</td><td>{{ site.Params.hours.wednesday }}</td></tr>
+        <tr><td>Donnerstag</td><td>{{ site.Params.hours.thursday }}</td></tr>
+        <tr><td>Freitag</td><td>{{ site.Params.hours.friday }}</td></tr>
+        <tr><td>Samstag</td><td>{{ site.Params.hours.saturday }}</td></tr>
+        <tr><td>Sonntag</td><td>{{ site.Params.hours.sunday }}</td></tr>
+      </table>
+    </div>
+    <div class="home-column">
+      <h3><i class="fas fa-share-alt"></i> Social Media</h3>
+      <p><a href="{{ site.Params.instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a></p>
+      <p><a href="{{ site.Params.facebook }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a></p>
+    </div>
+  </div>
+  <div class="map-wrapper">
+    <iframe
+      src="https://maps.google.com/maps?q=Heiliggeiststrasse%202%2C%206020%20Innsbruck&output=embed&z=16"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.hero-carousel', {
+          loop: true,
+          autoplay: { delay: 4000 },
+          speed: 1200,
+          slidesPerView: 3,
+          spaceBetween: 0,
+          breakpoints: {
+            768: { slidesPerView: 4 },
+            480: { slidesPerView: 2 }
+          }
+        });
+      }
+    });
+  </script>
+{{ end }}

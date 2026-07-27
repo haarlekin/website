@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ $images := .Resources.ByType "image" }}
+  {{ if $images }}
+    <div class="gallery-grid">
+      {{ range $images }}
+        <a href="{{ .RelPermalink }}" data-glightbox="gallery">
+          <img src="{{ .RelPermalink }}" alt="">
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox();
+      }
+    });
+  </script>
+{{ end }}

@@ -1,0 +1,75 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "{{slug}}"
+public_folder: "{{slug}}"
+
+collections:
+  - name: "pages"
+    label: "Seiten"
+    files:
+      - name: "home"
+        label: "Startseite"
+        file: "content/_index.md"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+
+  - name: "art"
+    label: "Art"
+    label_singular: "Art-Eintrag"
+    folder: "content/art"
+    create: true
+    identifier_field: "title"
+    extension: "md"
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: "{{slug}}"
+    public_folder: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Titelbild", name: "cover", widget: "image", required: false }
+
+  - name: "award"
+    label: "Awards"
+    label_singular: "Award-Eintrag"
+    folder: "content/award"
+    create: true
+    identifier_field: "title"
+    extension: "md"
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: "{{slug}}"
+    public_folder: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Titelbild", name: "cover", widget: "image", required: false }
+
+  - name: "salon"
+    label: "Salon"
+    label_singular: "Salon-Bild"
+    folder: "content/salon"
+    create: true
+    identifier_field: "title"
+    extension: "md"
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: "{{slug}}"
+    public_folder: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+
+  - name: "instagram"
+    label: "Instagram Beiträge"
+    files:
+      - name: "posts"
+        label: "Posts"
+        file: "data/instagram.yaml"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            fields:
+              - { label: "Instagram URL", name: "url", widget: "string" }

@@ -1,0 +1,16 @@
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+{{- with index site.Menus $menuID }}
+  <nav class="main-nav">
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+    <ul class="nav-list">
+      {{- range . }}
+        {{- $active := false }}
+        {{- if $page.IsMenuCurrent .Menu . }}{{ $active = true }}{{ end }}
+        <li>
+          <a href="{{ .URL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+        </li>
+      {{- end }}
+    </ul>
+  </nav>
+{{- end }}

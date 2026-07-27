@@ -1,0 +1,81 @@
+{{ define "main" }}
+  {{ $images := .Resources.ByType "image" }}
+  {{ if and $images (eq .Params.gallery_layout "carousel") }}
+    <div class="swiper salon-carousel" id="salon-carousel">
+        <div class="swiper-wrapper">
+          {{ range $images }}
+            <div class="swiper-slide">
+              <a href="{{ .RelPermalink }}" data-glightbox="gallery">
+                <img src="{{ .RelPermalink }}" alt="">
+              </a>
+            </div>
+          {{ end }}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+  {{ else if .Pages }}
+    <div class="section-grid">
+      {{ range .Pages }}
+        <div class="grid-card">
+          <a href="{{ .RelPermalink }}">
+            {{ $page := . }}
+            {{ $cover := "" }}
+            {{ with $page.Params.cover }}
+              {{ $cover = $page.Resources.GetMatch (path.Base .) }}
+            {{ end }}
+            {{ if not $cover }}
+              {{ with $page.Resources.ByType "image" }}
+                {{ $cover = index . 0 }}
+              {{ end }}
+            {{ end }}
+            {{ if $cover }}
+              <img src="{{ $cover.RelPermalink }}" alt="">
+            {{ else }}
+              {{ with .Resources.ByType "image" }}
+                {{ with index . 0 }}
+                  <img src="{{ .RelPermalink }}" alt="">
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            <h2>{{ .LinkTitle }}</h2>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  {{ else if $images }}
+    <div class="gallery-grid">
+      {{ range $images }}
+        <a href="{{ .RelPermalink }}" data-glightbox="gallery">
+          <img src="{{ .RelPermalink }}" alt="">
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof Swiper !== 'undefined') {
+        var carousels = document.querySelectorAll('.salon-carousel');
+        carousels.forEach(function(el) {
+          new Swiper(el, {
+            loop: true,
+            autoHeight: true,
+            slidesPerView: 3,
+            spaceBetween: 10,
+            navigation: {
+              nextEl: el.querySelector('.swiper-button-next'),
+              prevEl: el.querySelector('.swiper-button-prev')
+            },
+            breakpoints: {
+              768: { slidesPerView: 4 },
+              480: { slidesPerView: 2 }
+            }
+          });
+        });
+      }
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox({ selector: '[data-glightbox]' });
+      }
+    });
+  </script>
+{{ end }}
