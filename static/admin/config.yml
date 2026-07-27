@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  site_domain: https://haarlekin.netlify.app
   branch: main
 
 media_folder: "static/images/uploads"
@@ -13,7 +14,7 @@ collections:
         label: "Startseite"
         file: "content/_index.md"
         fields:
-          - { label: "Titel", name: "title", widget: "string" }
+          - {label: "Titel", name: "title", widget: "string"}
 
   - name: "art"
     label: "Art"
@@ -27,8 +28,8 @@ collections:
     media_folder: "{{slug}}"
     public_folder: "/art/{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Titelbild", name: "cover", widget: "image", required: false }
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Titelbild", name: "cover", widget: "image", required: false}
 
   - name: "award"
     label: "Awards"
@@ -42,8 +43,8 @@ collections:
     media_folder: "{{slug}}"
     public_folder: "/award/{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Titelbild", name: "cover", widget: "image", required: false }
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Titelbild", name: "cover", widget: "image", required: false}
 
   - name: "salon"
     label: "Salon"
@@ -57,7 +58,7 @@ collections:
     media_folder: "{{slug}}"
     public_folder: "/salon/{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
+      - {label: "Titel", name: "title", widget: "string"}
 
   - name: "instagram"
     label: "Instagram Beiträge"
@@ -70,4 +71,4 @@ collections:
             name: "posts"
             widget: "list"
             fields:
-              - { label: "Instagram URL", name: "url", widget: "string" }
+              - {label: "Instagram URL", name: "url", widget: "string"}
