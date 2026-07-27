@@ -1,26 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Content Manager</title>
-    <script>
-    if (!localStorage.getItem("netlifySiteURL")) {
-      localStorage.setItem("netlifySiteURL", "https://haarlekin.netlify.app");
-    }
-  </script>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
-<body>
-    <!-- Point the Identity Widget to your Netlify backend URL -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <!-- 1. Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- 2. Tell Identity where your API lives BEFORE Decap CMS loads -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.init({
-          APIUrl: "https://haarlekin.netlify.app"
+          APIUrl: "https://haarlekin.netlify.app/.netlify/identity"
         });
       }
     </script>
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
-</body>
+
+    <!-- 3. Decap CMS Script -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
 </html>
