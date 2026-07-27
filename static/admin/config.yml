@@ -1,8 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: haarlekin/website
   branch: main
+  base_url: https://oauth.decap-cms.org
 
-local_backend: true
+publish_mode: editorial_workflow
 
 media_folder: "{{slug}}"
 public_folder: "{{slug}}"
