@@ -13,6 +13,14 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+    <!-- Point the Identity Widget to your Netlify backend URL -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.init({
+          APIUrl: "https://haarlekin.netlify.app"
+        });
+      }
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
 </body>
 </html>
