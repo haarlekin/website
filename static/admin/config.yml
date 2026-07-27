@@ -24,8 +24,8 @@ collections:
     extension: "md"
     slug: "{{slug}}"
     path: "{{slug}}/index"
-    media_folder: "{{slug}}"
-    public_folder: "/art/{{slug}}"
+    media_folder: ""
+    public_folder: ""
     fields:
       - {label: "Titel", name: "title", widget: "string"}
       - {label: "Titelbild", name: "cover", widget: "image", required: false}
@@ -39,8 +39,8 @@ collections:
     extension: "md"
     slug: "{{slug}}"
     path: "{{slug}}/index"
-    media_folder: "{{slug}}"
-    public_folder: "/award/{{slug}}"
+    media_folder: ""
+    public_folder: ""
     fields:
       - {label: "Titel", name: "title", widget: "string"}
       - {label: "Titelbild", name: "cover", widget: "image", required: false}
@@ -54,8 +54,8 @@ collections:
     extension: "md"
     slug: "{{slug}}"
     path: "{{slug}}/index"
-    media_folder: "{{slug}}"
-    public_folder: "/salon/{{slug}}"
+    media_folder: ""
+    public_folder: ""
     fields:
       - {label: "Titel", name: "title", widget: "string"}
 
