@@ -5,7 +5,7 @@
       <div class="post-body">{{ .Content }}</div>
     {{ end }}
   </header>
-  {{ with hugo.Data.instagram.posts }}
+  {{ with .Params.instagram_posts }}
     <div class="instagrams">
       {{ range . }}
         <blockquote class="instagram-media" data-instgrm-permalink="{{ .url }}" data-instgrm-version="14"></blockquote>

@@ -64,21 +64,18 @@ collections:
               field: {label: "Bild", name: "img", widget: "image"},
             }
           - {label: "Text", name: "body", widget: "markdown", required: false}
-      - name: "instagram"
-        label: "Instagram Beiträge"
-        file: "data/instagram.yaml"
-        fields:
-          - label: "Posts"
-            name: "posts"
-            widget: "list"
-            fields:
-              - {label: "Instagram URL", name: "url", widget: "string"}
       - name: "beitraege-section"
-        label: "Beiträge Übersicht"
+        label: "Beiträge"
         file: "content/beitraege/_index.md"
         fields:
           - {label: "Titel", name: "title", widget: "string"}
           - {label: "Text", name: "body", widget: "markdown", required: false}
+          - label: "Instagram Posts"
+            name: "instagram_posts"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Instagram URL", name: "url", widget: "string"}
 
   - name: "navigation"
     label: "Navigation"
