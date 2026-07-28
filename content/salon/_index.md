@@ -1,5 +1,5 @@
 ---
-title: Salon
+title: Salon Test
 heading: Salon
 imgs:
   - img: salon_2.jpg
@@ -9,3 +9,4 @@ imgs:
   - img: salon_6.jpg
   - img: salon_7.jpg
 ---
+This is a test

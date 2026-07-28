@@ -2,4 +2,3 @@
 title: Art
 heading: Art
 ---
-

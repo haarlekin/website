@@ -1,5 +1,6 @@
 ---
 title: Toscana 2013
+date: 2013-09-01
 type: entry
 cover: 1-5.jpg
 imgs:

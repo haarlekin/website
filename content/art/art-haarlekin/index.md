@@ -1,5 +1,6 @@
 ---
 title: Art Haarlekin
+date: 2022-11-01
 type: entry
 cover: ID2A7093-Bearbeitet.jpg
 imgs:

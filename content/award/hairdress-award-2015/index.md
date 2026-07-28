@@ -1,5 +1,6 @@
 ---
 title: Hairdress Award 2015
+date: 2015-06-01
 type: entry
 cover: 2-2.jpg
 imgs:

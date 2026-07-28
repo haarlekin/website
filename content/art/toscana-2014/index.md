@@ -1,5 +1,6 @@
 ---
 title: Toscana 2014
+date: 2014-09-01
 type: entry
 cover: 3-5.jpg
 imgs:
