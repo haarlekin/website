@@ -1,5 +1,16 @@
 {{ define "main" }}
   {{ $images := .Resources.ByType "image" }}
+  {{ if .Params.imgs }}
+    {{ $filtered := slice }}
+    {{ range .Params.imgs }}
+      {{ $path := . }}
+      {{ if reflect.IsMap . }}{{ $path = .img }}{{ end }}
+      {{ with $.Resources.GetMatch (path.Base $path) }}
+        {{ $filtered = $filtered | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $images = $filtered }}
+  {{ end }}
   {{ if and $images (eq .Params.gallery_layout "carousel") }}
     <div class="swiper salon-carousel" id="salon-carousel">
         <div class="swiper-wrapper">

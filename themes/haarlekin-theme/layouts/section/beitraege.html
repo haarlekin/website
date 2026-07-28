@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ with .Params.heading }}<h1>{{ . }}</h1>{{ end }}
+  <h1>{{ .Params.heading | default .Title }}</h1>
   {{ .Content }}
   {{ with hugo.Data.instagram.posts }}
     <div class="instagrams">

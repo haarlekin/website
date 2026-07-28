@@ -1,21 +1,45 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ $images := .Resources.ByType "image" }}
-  {{ if $images }}
-    <div class="gallery-grid">
-      {{ range $images }}
+  <div class="gallery-grid">
+    {{ if .Params.imgs }}
+      {{ range .Params.imgs }}
+        {{ $path := . }}
+        {{ if reflect.IsMap . }}{{ $path = .img }}{{ end }}
+        {{ with $.Resources.GetMatch (path.Base $path) }}
+          {{ if strings.HasSuffix $path ".mp4" }}
+            <a href="{{ .RelPermalink }}" data-glightbox="type: video">
+              <video src="{{ .RelPermalink }}" muted playsinline></video>
+            </a>
+          {{ else }}
+            <a href="{{ .RelPermalink }}" data-glightbox="gallery">
+              <img src="{{ .RelPermalink }}" alt="">
+            </a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ range .Resources.ByType "image" }}
         <a href="{{ .RelPermalink }}" data-glightbox="gallery">
           <img src="{{ .RelPermalink }}" alt="">
         </a>
       {{ end }}
-    </div>
-  {{ end }}
+    {{ end }}
+    {{ if .Params.videos }}
+      {{ range .Params.videos }}
+        {{ $path := . }}
+        {{ if reflect.IsMap . }}{{ $path = .video }}{{ end }}
+        {{ with $.Resources.GetMatch (path.Base $path) }}
+          <a href="{{ .RelPermalink }}" data-glightbox="type: video">
+            <video src="{{ .RelPermalink }}" muted playsinline></video>
+          </a>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof GLightbox !== 'undefined') {
-        GLightbox();
-      }
-    });
+    if (typeof GLightbox !== 'undefined') {
+      GLightbox({ selector: '[data-glightbox]' });
+    }
   </script>
 {{ end }}

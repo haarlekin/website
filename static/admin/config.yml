@@ -1,17 +1,57 @@
+local_backend: true
+
 backend:
   name: git-gateway
   branch: main
 
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "static/images"
+public_folder: "/images"
 
 collections:
-  - name: "pages"
+  - name: "seiten"
     label: "Seiten"
     files:
       - name: "home"
         label: "Startseite"
         file: "content/_index.md"
+        media_folder: "static/carousel"
+        public_folder: "/carousel"
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+          - {
+              label: "Bilder (Hero-Karussell)",
+              name: "imgs",
+              widget: "list",
+              required: false,
+              field: {label: "Bild", name: "img", widget: "image"},
+            }
+      - name: "art-section"
+        label: "Art Übersicht"
+        file: "content/art/_index.md"
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+      - name: "award-section"
+        label: "Awards Übersicht"
+        file: "content/award/_index.md"
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+      - name: "salon-section"
+        label: "Salon Galerie"
+        file: "content/salon/_index.md"
+        media_folder: ""
+        public_folder: ""
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+          - {
+              label: "Bilder",
+              name: "imgs",
+              widget: "list",
+              required: false,
+              field: {label: "Bild", name: "img", widget: "image"},
+            }
+      - name: "beitraege-section"
+        label: "Beiträge Übersicht"
+        file: "content/beitraege/_index.md"
         fields:
           - {label: "Titel", name: "title", widget: "string"}
 
@@ -24,11 +64,26 @@ collections:
     extension: "md"
     slug: "{{slug}}"
     path: "{{slug}}/index"
+    filter: {field: "type", value: "entry"}
     media_folder: ""
     public_folder: ""
     fields:
       - {label: "Titel", name: "title", widget: "string"}
       - {label: "Titelbild", name: "cover", widget: "image", required: false}
+      - {
+          label: "Bilder",
+          name: "imgs",
+          widget: "list",
+          required: false,
+          field: {label: "Bild", name: "img", widget: "image"},
+        }
+      - {
+          label: "Videos",
+          name: "videos",
+          widget: "list",
+          required: false,
+          field: {label: "Video", name: "video", widget: "file"},
+        }
 
   - name: "award"
     label: "Awards"
@@ -39,31 +94,47 @@ collections:
     extension: "md"
     slug: "{{slug}}"
     path: "{{slug}}/index"
+    filter: {field: "type", value: "entry"}
     media_folder: ""
     public_folder: ""
     fields:
       - {label: "Titel", name: "title", widget: "string"}
       - {label: "Titelbild", name: "cover", widget: "image", required: false}
+      - {
+          label: "Bilder",
+          name: "imgs",
+          widget: "list",
+          required: false,
+          field: {label: "Bild", name: "img", widget: "image"},
+        }
+      - {
+          label: "Videos",
+          name: "videos",
+          widget: "list",
+          required: false,
+          field: {label: "Video", name: "video", widget: "file"},
+        }
 
-  - name: "salon"
-    label: "Salon"
-    label_singular: "Salon-Bild"
-    folder: "content/salon"
-    create: true
-    identifier_field: "title"
-    extension: "md"
-    slug: "{{slug}}"
-    path: "{{slug}}/index"
-    media_folder: ""
-    public_folder: ""
-    fields:
-      - {label: "Titel", name: "title", widget: "string"}
+  - name: "oeffnungszeiten"
+    label: "Öffnungszeiten"
+    files:
+      - name: "hours"
+        label: "Öffnungszeiten"
+        file: "data/hours.yaml"
+        fields:
+          - {label: "Montag", name: "monday", widget: "string"}
+          - {label: "Dienstag", name: "tuesday", widget: "string"}
+          - {label: "Mittwoch", name: "wednesday", widget: "string"}
+          - {label: "Donnerstag", name: "thursday", widget: "string"}
+          - {label: "Freitag", name: "friday", widget: "string"}
+          - {label: "Samstag", name: "saturday", widget: "string"}
+          - {label: "Sonntag", name: "sunday", widget: "string"}
 
   - name: "instagram"
     label: "Instagram Beiträge"
     files:
       - name: "posts"
-        label: "Posts"
+        label: "Instagram Posts"
         file: "data/instagram.yaml"
         fields:
           - label: "Posts"
