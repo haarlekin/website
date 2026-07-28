@@ -9,4 +9,3 @@ imgs:
   - img: salon_6.jpg
   - img: salon_7.jpg
 ---
-This is a test
