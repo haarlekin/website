@@ -1,7 +1,7 @@
 ---
 title: Haarlekin
 imgs:
-  - img: /images/1.jpg
+  - carousel/1.jpg
   - img: /images/2.jpg
   - img: /images/3.jpg
   - img: /images/4.jpg
