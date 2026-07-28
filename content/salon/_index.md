@@ -1,5 +1,5 @@
 ---
-title: Salon Test
+title: Salon
 heading: Salon
 imgs:
   - img: salon_2.jpg
