@@ -12,4 +12,3 @@ imgs:
   - img: 14-2.jpg
   - img: 17-2.jpg
 ---
-This is a test.
