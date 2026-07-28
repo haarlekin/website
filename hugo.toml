@@ -1,4 +1,4 @@
-baseURL = 'https://haarlekin.github.io/website'
+baseURL = 'https://haarlekin.at/'
 locale = 'de-DE'
 title = 'Haarlekin - Friseursalon Innsbruck'
 theme = 'haarlekin-theme'
