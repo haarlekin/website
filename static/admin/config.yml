@@ -1,3 +1,4 @@
+local_backend: true
 backend:
   name: git-gateway
   repo: haarlekin/website
@@ -37,6 +38,8 @@ collections:
       - name: "home"
         label: "Startseite"
         file: "content/_index.md"
+        media_folder: "carousel"
+        public_folder: "carousel"
         fields:
           - {label: "Titel", name: "title", widget: "string"}
           - {

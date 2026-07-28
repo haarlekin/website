@@ -7,7 +7,7 @@
 {{ if reflect.IsMap . }}{{ $path = .img }}{{ end }}
 {{ $img := $.Resources.GetMatch (path.Base $path) }}
 {{ if not $img }}
-{{ $img = strings.TrimPrefix "/" $path | relURL }}
+{{ $img = $path | relURL }}
 {{ end }}
 {{ $filtered = $filtered | append $img }}
 {{ end }}
