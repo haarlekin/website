@@ -1,4 +1,4 @@
-baseURL = 'https://haarlekin.neblify.app/'
+baseURL = 'https://haarlekin.netlify.app/'
 locale = 'de-DE'
 title = 'Haarlekin - Friseursalon Innsbruck'
 theme = 'haarlekin-theme'
