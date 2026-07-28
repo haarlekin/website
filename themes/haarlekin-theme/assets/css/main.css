@@ -165,9 +165,16 @@ body {
   padding: 40px 0;
 }
 
+.home-column {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .home-column h3 {
   font-family: "Advent Pro", sans-serif;
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -178,26 +185,29 @@ body {
 .home-column h3 i {
   width: 24px;
   margin-right: 6px;
+  color: #1a5276;
 }
 
 .home-column p {
   margin: 10px 0;
-  font-size: 1.15em;
+  font-size: 1.3em;
 }
 
 .home-column a {
   color: #333;
   text-decoration: none;
+  transition: opacity 0.2s;
 }
 
 .home-column a:hover {
-  text-decoration: underline;
+  opacity: 0.6;
 }
 
 .home-column .hours-table {
-  width: 100%;
+  margin: 0 auto;
   border-collapse: collapse;
-  font-size: 1.1em;
+  font-size: 1.25em;
+  text-align: left;
 }
 
 .home-column .hours-table td {
@@ -214,7 +224,7 @@ body {
   width: 22px;
   text-align: center;
   margin-right: 8px;
-  color: #1a5276;
+  color: #333;
 }
 
 .instagrams {
