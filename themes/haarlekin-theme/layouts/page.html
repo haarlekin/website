@@ -1,6 +1,12 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+  <header class="post-header">
+    <h1>{{ .Title }}</h1>
+    {{ if .Content }}
+      <div class="post-body">
+        {{ .Content }}
+      </div>
+    {{ end }}
+  </header>
   <div class="gallery-grid">
     {{ if .Params.imgs }}
       {{ range .Params.imgs }}
@@ -37,9 +43,5 @@
       {{ end }}
     {{ end }}
   </div>
-  <script>
-    if (typeof GLightbox !== 'undefined') {
-      GLightbox({ selector: '[data-glightbox]' });
-    }
-  </script>
+  {{ partial "gallery-scripts.html" . }}
 {{ end }}

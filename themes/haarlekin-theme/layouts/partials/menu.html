@@ -1,5 +1,6 @@
 {{- $page := .page }}
 {{- $menuID := .menuID }}
+{{- $nav := site.Data.navigation.items | default slice }}
 {{- with index site.Menus $menuID }}
   <nav class="main-nav">
     <button class="menu-toggle" aria-label="Menu">☰</button>
@@ -7,8 +8,13 @@
       {{- range . }}
         {{- $active := false }}
         {{- if $page.IsMenuCurrent .Menu . }}{{ $active = true }}{{ end }}
+        {{- $label := .Name }}
+        {{- $ref := or .PageRef "" }}
+        {{- range $nav }}
+          {{- if and $ref (eq .ref $ref) }}{{ $label = .label }}{{ end }}
+        {{- end }}
         <li>
-          <a href="{{ .URL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+          <a href="{{ .URL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ $label }}</a>
         </li>
       {{- end }}
     </ul>

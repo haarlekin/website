@@ -4,12 +4,14 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <div class="site-wrapper">
-    {{ partial "header.html" . }}
-    <div class="content-area{{ if .IsHome }} content-area--home{{ end }}">
-      <main class="main-content">
-        {{ block "main" . }}{{ end }}
-      </main>
+  <div class="page">
+    <div class="site-wrapper">
+      {{ partial "header.html" . }}
+      <div class="content-area{{ if .IsHome }} content-area--home{{ end }}">
+        <main class="main-content">
+          {{ block "main" . }}{{ end }}
+        </main>
+      </div>
     </div>
     {{ partial "footer.html" . }}
   </div>

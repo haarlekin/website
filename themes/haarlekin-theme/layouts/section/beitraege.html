@@ -1,6 +1,10 @@
 {{ define "main" }}
-  <h1>{{ .Params.heading | default .Title }}</h1>
-  {{ .Content }}
+  <header class="post-header">
+    <h1>{{ .Params.heading | default .Title }}</h1>
+    {{ if .Content }}
+      <div class="post-body">{{ .Content }}</div>
+    {{ end }}
+  </header>
   {{ with hugo.Data.instagram.posts }}
     <div class="instagrams">
       {{ range . }}

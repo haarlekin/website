@@ -1,0 +1,11 @@
+items:
+  - label: Home
+    ref: /
+  - label: Beiträge
+    ref: /beitraege
+  - label: Art
+    ref: /art
+  - label: Awards
+    ref: /award
+  - label: Salon
+    ref: /salon

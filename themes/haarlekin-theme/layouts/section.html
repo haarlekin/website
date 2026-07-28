@@ -27,7 +27,7 @@
       </div>
   {{ else if .Pages }}
     <div class="section-grid">
-      {{ range .Pages }}
+      {{ range .Pages.ByDate.Reverse }}
         <div class="grid-card">
           <a href="{{ .RelPermalink }}">
             {{ $page := . }}
@@ -55,6 +55,12 @@
       {{ end }}
     </div>
   {{ else if $images }}
+    <header class="post-header">
+      <h1>{{ .Title }}</h1>
+      {{ if .Content }}
+        <div class="post-body">{{ .Content }}</div>
+      {{ end }}
+    </header>
     <div class="gallery-grid">
       {{ range $images }}
         <a href="{{ .RelPermalink }}" data-glightbox="gallery">
@@ -63,30 +69,5 @@
       {{ end }}
     </div>
   {{ end }}
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof Swiper !== 'undefined') {
-        var carousels = document.querySelectorAll('.salon-carousel');
-        carousels.forEach(function(el) {
-          new Swiper(el, {
-            loop: true,
-            autoHeight: true,
-            slidesPerView: 3,
-            spaceBetween: 10,
-            navigation: {
-              nextEl: el.querySelector('.swiper-button-next'),
-              prevEl: el.querySelector('.swiper-button-prev')
-            },
-            breakpoints: {
-              768: { slidesPerView: 4 },
-              480: { slidesPerView: 2 }
-            }
-          });
-        });
-      }
-      if (typeof GLightbox !== 'undefined') {
-        GLightbox({ selector: '[data-glightbox]' });
-      }
-    });
-  </script>
+  {{ partial "gallery-scripts.html" . }}
 {{ end }}
