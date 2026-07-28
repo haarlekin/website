@@ -37,8 +37,8 @@ collections:
       - name: "home"
         label: "Startseite"
         file: "content/_index.md"
-        media_folder: "static/carousel"
-        public_folder: "/carousel"
+        media_folder: "/static/images/carousel"
+        public_folder: "/imgages/carousel"
         fields:
           - {label: "Titel", name: "title", widget: "string"}
           - {
