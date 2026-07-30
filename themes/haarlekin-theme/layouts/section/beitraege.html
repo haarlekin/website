@@ -1,16 +1,79 @@
 {{ define "main" }}
-  <header class="post-header">
+<header class="post-header">
     <h1>{{ .Params.heading | default .Title }}</h1>
     {{ if .Content }}
-      <div class="post-body">{{ .Content }}</div>
+    <div class="post-body">{{ .Content }}</div>
     {{ end }}
-  </header>
-  {{ with .Params.instagram_posts }}
-    <div class="instagrams">
-      {{ range . }}
-        <blockquote class="instagram-media" data-instgrm-permalink="{{ .url }}" data-instgrm-version="14"></blockquote>
-      {{ end }}
+</header>
+{{ with .Params.instagram_posts }}
+<div class="instagrams">
+    <div class="instagrams-loader">
+        <div class="spinner"></div>
+        <span>Instagram-Beiträge werden geladen…</span>
     </div>
-    <script async src="//www.instagram.com/embed.js"></script>
-  {{ end }}
+    {{ range . }}
+    <blockquote class="instagram-media"
+                data-instgrm-permalink="{{ .url }}"
+                data-instgrm-version="14">
+    </blockquote>
+    {{ end }}
+</div>
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var loader = document.querySelector('.instagrams-loader');
+        var container = document.querySelector('.instagrams');
+        if (!loader || !container) return;
+
+        var removed = false;
+        var start = Date.now();
+
+        var remove = function() {
+          if (removed) return;
+          var elapsed = Date.now() - start;
+          if (elapsed < 1000) {
+            setTimeout(remove, 1000 - elapsed);
+          } else {
+            removed = true;
+            if (loader.parentNode) loader.remove();
+          }
+        };
+
+        var allLoaded = function() {
+          var iframes = container.querySelectorAll('.instagram-media-rendered');
+          var done = 0;
+          for (var i = 0; i < iframes.length; i++) {
+            if (iframes[i].getAttribute('data-loaded')) done++;
+          }
+          return iframes.length > 0 && done === iframes.length;
+        };
+
+        var observer = new MutationObserver(function() {
+          var iframes = container.querySelectorAll('iframe');
+          for (var i = 0; i < iframes.length; i++) {
+            if (!iframes[i].getAttribute('data-listening')) {
+              iframes[i].setAttribute('data-listening', '1');
+              iframes[i].addEventListener('load', function() {
+                this.setAttribute('data-loaded', '1');
+                if (allLoaded()) remove();
+              });
+              if (iframes[i].getAttribute('data-loaded')) continue;
+              try {
+                if (iframes[i].contentWindow && iframes[i].contentWindow.location.href) {
+                  iframes[i].setAttribute('data-loaded', '1');
+                }
+              } catch(e) {}
+            }
+          }
+        });
+        observer.observe(container, { childList: true, subtree: true });
+
+        var poll = setInterval(function() {
+          if (allLoaded()) { clearInterval(poll); remove(); }
+        }, 1000);
+
+        setTimeout(function() { clearInterval(poll); observer.disconnect(); remove(); }, 10000);
+      });
+</script>
+{{ end }}
 {{ end }}
