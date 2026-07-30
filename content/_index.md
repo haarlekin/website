@@ -15,3 +15,5 @@ imgs:
   - img: carousel/11.jpg
   - img: carousel/12.jpg
 ---
+
+Haarlekin ist Ihr Friseursalon in Innsbruck. Kreative Haarschnitte, Colorationen und modernes Styling in der Heiliggeiststrasse 2. Lassen Sie sich von unserem Team professionell beraten und verwöhnen – von klassisch bis avantgardistisch.

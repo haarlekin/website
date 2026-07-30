@@ -23,15 +23,16 @@
     </div>
 </div>
 {{ end }}
+{{ if .Content }}<div class="sr-only">{{ .Content }}</div>{{ end }}
 <div class="home-columns">
     <div class="home-column">
-        <h3><i class="fas fa-address-book"></i> Kontakt</h3>
+        <h2><i class="fas fa-address-book"></i> Kontakt</h2>
         <p><a href="tel:{{ site.Params.phone_tel }}"><i class="fas fa-phone-alt"></i> {{ site.Params.phone }}</a></p>
         <p><a href="{{ site.Params.address_link }}" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> {{ site.Params.address }}</a></p>
         <p><a href="mailto:{{ site.Params.email }}"><i class="fas fa-envelope"></i> {{ site.Params.email }}</a></p>
     </div>
     <div class="home-column">
-        <h3><i class="fas fa-clock"></i> Öffnungszeiten</h3>
+        <h2><i class="fas fa-clock"></i> Öffnungszeiten</h2>
         <table class="hours-table">
             <tr><td>Montag</td><td>{{ hugo.Data.hours.monday }}</td></tr>
             <tr><td>Dienstag</td><td>{{ hugo.Data.hours.tuesday }}</td></tr>
@@ -43,7 +44,7 @@
         </table>
     </div>
     <div class="home-column">
-        <h3><i class="fas fa-share-alt"></i> Social Media</h3>
+        <h2><i class="fas fa-share-alt"></i> Social Media</h2>
         <p><a href="{{ site.Params.instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a></p>
         <p><a href="{{ site.Params.facebook }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a></p>
     </div>
