@@ -1,5 +1,6 @@
 ---
 title: Haarlekin
+description: 'Haarlekin – Ihr kreativer Friseursalon in Innsbruck. Haarschnitte, Colorationen und Styling in der Heiliggeiststrasse 2.'
 imgs:
   - img: carousel/1.jpg
   - img: carousel/2.jpg

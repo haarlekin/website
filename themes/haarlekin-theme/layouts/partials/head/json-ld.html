@@ -1,0 +1,24 @@
+{{- $description := or .Description site.Params.description -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": {{ site.Title | jsonify | safeJS }},
+  "description": {{ $description | jsonify | safeJS }},
+  "url": {{ site.BaseURL | jsonify | safeJS }},
+  "telephone": {{ site.Params.phone_tel | jsonify | safeJS }},
+  "email": {{ site.Params.email | jsonify | safeJS }},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ site.Params.address | jsonify | safeJS }},
+    "addressLocality": "Innsbruck",
+    "postalCode": "6020",
+    "addressCountry": "AT"
+  },
+  "image": {{ (absURL "images/haarlekin_blue_highres.png") | jsonify | safeJS }},
+  "sameAs": [
+    {{ site.Params.instagram | jsonify | safeJS }},
+    {{ site.Params.facebook | jsonify | safeJS }}
+  ]
+}
+</script>

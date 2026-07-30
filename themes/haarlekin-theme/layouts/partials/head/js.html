@@ -1,12 +1,18 @@
 {{- with resources.Get "js/swiper-bundle.min.js" }}
-  <script src="{{ .RelPermalink }}"></script>
+  {{- if hugo.IsDevelopment }}
+    <script src="{{ .RelPermalink }}" defer></script>
+  {{- else }}
+    {{- with . | fingerprint }}
+      <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{- end }}
+  {{- end }}
 {{- end }}
 {{- with resources.Get "js/glightbox.min.js" }}
   {{- if hugo.IsDevelopment }}
-    <script src="{{ .RelPermalink }}"></script>
+    <script src="{{ .RelPermalink }}" defer></script>
   {{- else }}
     {{- with . | fingerprint }}
-      <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+      <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
     {{- end }}
   {{- end }}
 {{- end }}

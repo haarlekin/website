@@ -1,28 +1,21 @@
 {{ define "main" }}
-{{ $images := .Resources.ByType "image" }}
 {{ if .Params.imgs }}
-{{ $filtered := slice }}
-{{ range .Params.imgs }}
-{{ $path := . }}
-{{ if reflect.IsMap . }}{{ $path = .img }}{{ end }}
-{{ $img := $.Resources.GetMatch (path.Base $path) }}
-{{ if not $img }}
-{{ $img = $path | relURL }}
-{{ end }}
-{{ $filtered = $filtered | append $img }}
-{{ end }}
-{{ $images = $filtered }}
-{{ end }}
-{{ if $images }}
 <div class="carousel-wrapper">
     <div class="swiper hero-carousel">
         <div class="swiper-wrapper">
-            {{ range $images }}
+            {{ range .Params.imgs }}
             <div class="swiper-slide">
+                {{ $path := . }}
+                {{ $alt := $.Title }}
                 {{ if reflect.IsMap . }}
-                <img src="{{ .RelPermalink }}" alt="">
-            {{ else }}
-                <img src="{{ . }}" alt="">
+                    {{ $path = .img }}
+                    {{ with .alt }}{{ $alt = . }}{{ end }}
+                {{ end }}
+                {{ $img := $.Resources.GetMatch (path.Base $path) }}
+                {{ if $img }}
+                    <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}">
+                {{ else }}
+                    <img src="{{ $path | relURL }}" alt="{{ $alt }}">
                 {{ end }}
             </div>
             {{ end }}
@@ -32,71 +25,33 @@
 {{ end }}
 <div class="home-columns">
     <div class="home-column">
-        <h3>
-            <i class="fas fa-address-book"></i> Kontakt
-        </h3>
-        <p>
-            <a href="tel:{{ site.Params.phone_tel }}"><i class="fas fa-phone-alt"></i> {{ site.Params.phone }}</a>
-        </p>
-        <p>
-            <a href="{{ site.Params.address_link }}" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> {{ site.Params.address }}</a>
-        </p>
-        <p>
-            <a href="mailto:{{ site.Params.email }}"><i class="fas fa-envelope"></i> {{ site.Params.email }}</a>
-        </p>
+        <h3><i class="fas fa-address-book"></i> Kontakt</h3>
+        <p><a href="tel:{{ site.Params.phone_tel }}"><i class="fas fa-phone-alt"></i> {{ site.Params.phone }}</a></p>
+        <p><a href="{{ site.Params.address_link }}" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> {{ site.Params.address }}</a></p>
+        <p><a href="mailto:{{ site.Params.email }}"><i class="fas fa-envelope"></i> {{ site.Params.email }}</a></p>
     </div>
     <div class="home-column">
-        <h3>
-            <i class="fas fa-clock"></i> Öffnungszeiten
-        </h3>
+        <h3><i class="fas fa-clock"></i> Öffnungszeiten</h3>
         <table class="hours-table">
-            <tr>
-                <td>Montag</td>
-                <td>{{ hugo.Data.hours.monday }}</td>
-            </tr>
-            <tr>
-                <td>Dienstag</td>
-                <td>{{ hugo.Data.hours.tuesday }}</td>
-            </tr>
-            <tr>
-                <td>Mittwoch</td>
-                <td>{{ hugo.Data.hours.wednesday }}</td>
-            </tr>
-            <tr>
-                <td>Donnerstag</td>
-                <td>{{ hugo.Data.hours.thursday }}</td>
-            </tr>
-            <tr>
-                <td>Freitag</td>
-                <td>{{ hugo.Data.hours.friday }}</td>
-            </tr>
-            <tr>
-                <td>Samstag</td>
-                <td>{{ hugo.Data.hours.saturday }}</td>
-            </tr>
-            <tr>
-                <td>Sonntag</td>
-                <td>{{ hugo.Data.hours.sunday }}</td>
-            </tr>
+            <tr><td>Montag</td><td>{{ hugo.Data.hours.monday }}</td></tr>
+            <tr><td>Dienstag</td><td>{{ hugo.Data.hours.tuesday }}</td></tr>
+            <tr><td>Mittwoch</td><td>{{ hugo.Data.hours.wednesday }}</td></tr>
+            <tr><td>Donnerstag</td><td>{{ hugo.Data.hours.thursday }}</td></tr>
+            <tr><td>Freitag</td><td>{{ hugo.Data.hours.friday }}</td></tr>
+            <tr><td>Samstag</td><td>{{ hugo.Data.hours.saturday }}</td></tr>
+            <tr><td>Sonntag</td><td>{{ hugo.Data.hours.sunday }}</td></tr>
         </table>
     </div>
     <div class="home-column">
-        <h3>
-            <i class="fas fa-share-alt"></i> Social Media
-        </h3>
-        <p>
-            <a href="{{ site.Params.instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-        </p>
-        <p>
-            <a href="{{ site.Params.facebook }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a>
-        </p>
+        <h3><i class="fas fa-share-alt"></i> Social Media</h3>
+        <p><a href="{{ site.Params.instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a></p>
+        <p><a href="{{ site.Params.facebook }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i> Facebook</a></p>
     </div>
 </div>
 <div class="map-wrapper">
     <iframe src="https://maps.google.com/maps?q=Heiliggeiststrasse%202%2C%206020%20Innsbruck&output=embed&z=16"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Haarlekin Standort auf Google Maps">
     </iframe>
 </div>
 <script>

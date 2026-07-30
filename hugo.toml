@@ -2,9 +2,11 @@ baseURL = 'https://haarlekin.at/'
 locale = 'de-DE'
 title = 'Haarlekin - Friseursalon Innsbruck'
 theme = 'haarlekin-theme'
+enableRobotsTXT = true
 
 [params]
   subtitle = 'Friseursalon'
+  description = 'Haarlekin – Ihr kreativer Friseursalon in Innsbruck. Haarschnitte, Colorationen und Styling in der Heiliggeiststrasse 2.'
   phone = '0512 57 46 75'
   phone_tel = '+43512574675'
   address = 'Heiliggeiststrasse 2'
@@ -12,6 +14,9 @@ theme = 'haarlekin-theme'
   email = 'haarlekin@gmx.at'
   instagram = 'https://www.instagram.com/hell_alexandra/'
   facebook = 'https://www.facebook.com/designs.for.art'
+
+[params.og]
+  image = '/images/haarlekin_blue_highres.png'
 
 [cascade]
   [cascade."content/art"]

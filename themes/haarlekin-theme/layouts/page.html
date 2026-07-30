@@ -11,7 +11,11 @@
     {{ if .Params.imgs }}
       {{ range .Params.imgs }}
         {{ $path := . }}
-        {{ if reflect.IsMap . }}{{ $path = .img }}{{ end }}
+        {{ $alt := $.Title }}
+        {{ if reflect.IsMap . }}
+          {{ $path = .img }}
+          {{ with .alt }}{{ $alt = . }}{{ end }}
+        {{ end }}
         {{ with $.Resources.GetMatch (path.Base $path) }}
           {{ if strings.HasSuffix $path ".mp4" }}
             <a href="{{ .RelPermalink }}" data-glightbox="type: video">
@@ -19,7 +23,7 @@
             </a>
           {{ else }}
             <a href="{{ .RelPermalink }}" data-glightbox="gallery">
-              <img src="{{ .RelPermalink }}" alt="">
+              <img src="{{ .RelPermalink }}" alt="{{ $alt }}">
             </a>
           {{ end }}
         {{ end }}
@@ -27,7 +31,7 @@
     {{ else }}
       {{ range .Resources.ByType "image" }}
         <a href="{{ .RelPermalink }}" data-glightbox="gallery">
-          <img src="{{ .RelPermalink }}" alt="">
+          <img src="{{ .RelPermalink }}" alt="{{ $.Title }}">
         </a>
       {{ end }}
     {{ end }}
