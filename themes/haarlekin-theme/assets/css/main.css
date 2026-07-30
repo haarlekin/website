@@ -231,6 +231,7 @@ body {
   justify-content: center;
 }
 
+.home-column h2,
 .home-column h3 {
   font-family: "Advent Pro", sans-serif;
   font-size: 1.4em;
@@ -241,6 +242,7 @@ body {
   color: #1a5276;
 }
 
+.home-column h2 i,
 .home-column h3 i {
   width: 24px;
   margin-right: 6px;
